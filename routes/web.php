@@ -5,6 +5,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\FTPController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,3 +56,5 @@ Route::group(['middleware' => ['role:Super Admin']], function() {
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
 });
+Route::get('/ftp/read', [FTPController::class, 'read'])->name('ftp.read');
+Route::get('/ftp/write', [FTPController::class, 'write'])->name('ftp.write');
